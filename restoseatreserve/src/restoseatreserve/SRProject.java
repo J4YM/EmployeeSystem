@@ -105,32 +105,32 @@ public class SRProject {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("No. of Reservation:");
+		JLabel lblNewLabel = new JLabel("Employee ID");
 		lblNewLabel.setForeground(new Color(255, 255, 255));
 		lblNewLabel.setBackground(new Color(0, 0, 0));
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setBounds(31, 81, 148, 14);
+		lblNewLabel.setBounds(31, 81, 160, 14);
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Name:");
+		JLabel lblNewLabel_1 = new JLabel("Employee Name");
 		lblNewLabel_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(31, 146, 108, 14);
+		lblNewLabel_1.setBounds(31, 146, 160, 14);
 		panel.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("Date and Time:");
+		JLabel lblNewLabel_2 = new JLabel("Last Paid");
 		lblNewLabel_2.setForeground(new Color(255, 255, 255));
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_2.setBounds(31, 341, 108, 14);
 		panel.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("No. of Childrens:");
+		JLabel lblNewLabel_3 = new JLabel("Monthly Salary");
 		lblNewLabel_3.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3.setBounds(31, 213, 123, 14);
 		panel.add(lblNewLabel_3);
 		
-		JLabel lblNewLabel_3_1 = new JLabel("No. of Adults:");
+		JLabel lblNewLabel_3_1 = new JLabel("Balance");
 		lblNewLabel_3_1.setForeground(new Color(255, 255, 255));
 		lblNewLabel_3_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_3_1.setBounds(31, 279, 108, 14);
@@ -181,8 +181,8 @@ public class SRProject {
 			}
 		});
 		mod = new DefaultTableModel();
-		Object[] column = {"Reservation No.", "Name", "No. of Adults", "No. of Childrens", "Date", "Time" };
-		Object[] row = new Object[6];
+		Object[] column = {"Employee ID", "Name", "Monthly Salary", "Balance", "Last Paid" }; //years worked [5]
+		Object[] row = new Object[5];
 		mod.setColumnIdentifiers(column);
 		table.setModel(mod);
 		scrollPane.setViewportView(table);
@@ -202,8 +202,8 @@ public class SRProject {
 					row[1] = name.getText();
 					row[2] = childrenCount.getText();
 					row[3] = adultCount.getText();
-					row[4] = monthText.getText() + "  " +dayText.getText();
-					row[5] = timeText.getText() + " " +timeBoxT.getText();
+					row[4] = monthText.getText() + "  " +dayText.getText() + "  " + timeText.getText() + " " +timeBoxT.getText();
+//					row[5] = timeText.getText() + " " +timeBoxT.getText();
 					
 					mod.addRow(row);
 					
@@ -254,7 +254,7 @@ public class SRProject {
 					mod.setValueAt(name.getText(), etab, 1);
 					mod.setValueAt(childrenCount.getText(), etab, 2);
 					mod.setValueAt(adultCount.getText(), etab, 3);
-					mod.setValueAt(monthText.getText()+ "  "+dayText.getText(), etab, 4);
+					mod.setValueAt(monthText.getText()+ "  "+dayText.getText(), etab, 5);
 					mod.setValueAt(timeText.getText()+ " "+timeBoxT.getText(), etab, 5);
 					JOptionPane.showMessageDialog(null, "Reservation Successfully Updated!");
 				}
