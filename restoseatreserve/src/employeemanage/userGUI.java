@@ -1,7 +1,9 @@
 package employeemanage;
 
+import employee.backend.backend;
 import javax.swing.JOptionPane;
-
+import employee.backend.employee;
+import javax.swing.JLabel;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -13,10 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class userGUI extends javax.swing.JFrame {
 
-    /**
-     * Creates new form userGUI
-     */
+    public static JLabel idField;
+    public static JLabel userName;
+    public static JLabel salaryFIeld;
+    public static JLabel balanceFIeld1;
+    public static JLabel lastpaidField;
     public userGUI() {
+        
         initComponents();
     }
 
@@ -28,7 +33,6 @@ public class userGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
         infoPanel = new javax.swing.JPanel();
         userName = new javax.swing.JLabel();
         greet = new javax.swing.JLabel();
@@ -54,7 +58,6 @@ public class userGUI extends javax.swing.JFrame {
 
         userName.setFont(new java.awt.Font("Cambria Math", 1, 30)); // NOI18N
         userName.setForeground(new java.awt.Color(255, 255, 255));
-        userName.setText("NAME");
 
         greet.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         greet.setForeground(new java.awt.Color(255, 255, 255));
@@ -66,7 +69,6 @@ public class userGUI extends javax.swing.JFrame {
 
         idField.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         idField.setForeground(new java.awt.Color(255, 255, 255));
-        idField.setText("idField");
 
         logoutBtn.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         logoutBtn.setText("LOGOUT");
@@ -119,16 +121,13 @@ public class userGUI extends javax.swing.JFrame {
         balanceLabel.setText("Balance");
 
         salaryFIeld.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        salaryFIeld.setText("salaryField");
 
         jLabel1.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         jLabel1.setText("Salary");
 
         balanceFIeld1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        balanceFIeld1.setText("balanceFIeld");
 
         lastpaidField.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        lastpaidField.setText("lastpaidField");
 
         lastpaidLabel.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         lastpaidLabel.setText("Last paid");
@@ -216,25 +215,34 @@ public class userGUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                backend b = new backend();
+                        b.getAll().forEach((item) -> {
+                            if(item.getID().equalsIgnoreCase(Restoseatreserve.pass) && item.getName().equalsIgnoreCase(Restoseatreserve.uName)) {
+                                
+                                userName.setText(item.getName());
+                                idField.setText(item.getID());
+                                salaryFIeld.setText(item.getSalary());
+                                balanceFIeld1.setText(item.getBalance());
+                                lastpaidField.setText(item.getDaT());
+                            }
+                        });
                 new userGUI().setVisible(true);
+                
+                
             }
         });
+        
     }
     
     
 
     // Variables declaration - do not modify                     
-    private javax.swing.JLabel balanceFIeld1;
     private javax.swing.JLabel balanceLabel;
     private javax.swing.JLabel greet;
-    private javax.swing.JLabel idField;
     private javax.swing.JLabel idLabel;
     private javax.swing.JPanel infoPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lastpaidField;
     private javax.swing.JLabel lastpaidLabel;
     private javax.swing.JButton logoutBtn;
-    private javax.swing.JLabel salaryFIeld;
-    private javax.swing.JLabel userName;
     // End of variables declaration                   
 }

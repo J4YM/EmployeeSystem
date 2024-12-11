@@ -40,39 +40,29 @@ public class credsBackend {
     public synchronized boolean checkCreds(String name, String pass) {
 
         List<employee> itemList = getAll();
-
+        List<employee> itemCred = new ArrayList<>();
         int indexToBeDeleted = -1;
         // find the cred to log in
         for (int i = 0; i < itemList.size(); i++) {
-            employee item = itemList.get(i);
-
-            if (item.getName().equalsIgnoreCase(name) && item.getID().equalsIgnoreCase(pass)) {
-                indexToBeDeleted = i;
-                
-                
-            }
-        }
-        List<employee> items = new ArrayList<>();
-        try (Scanner scanner = new Scanner(new FileInputStream("DATABASE/reservedatabase.txt"))) {
-            while (scanner.hasNextLine()) {
+            try (Scanner scanner = new Scanner(new FileInputStream("DATABASE/reservedatabase.txt"))) {
                 String itemLine = scanner.nextLine();
 
                 String itemInfo[] = itemLine.split(",");
-
                 employee item = new employee(itemInfo[0], itemInfo[1],
                         itemInfo[2], itemInfo[3], itemInfo[4]);
-
-                items.add(item);
-            }
-        } catch (FileNotFoundException ex) {
+                
+                if (item.getName().equalsIgnoreCase(name) && item.getID().equalsIgnoreCase(pass)) {
+                    indexToBeDeleted = i;
+                    break;
+                }
+            } catch (FileNotFoundException ex) {
             Logger.getLogger(backend.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }    
+        
         if (indexToBeDeleted == -1) {
             return false;
         }
-        
-        
-
         return true;
     }
 }
