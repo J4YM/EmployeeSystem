@@ -5,6 +5,7 @@ package employeemanage;
  * @author Rubs
  */
 
+import employee.backend.backend;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -20,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import employee.backend.credsBackend;
+import employee.backend.employee;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -37,12 +39,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Restoseatreserve extends credsBackend{
+public class Restoseatreserve extends userGUI{
 
 	private JFrame frame;
 	private JPasswordField password;
 	private JTextField username;
-	
+	public static String uName;
+        public static String pass;
 
 	/**
 	 * Launch the application.
@@ -130,8 +133,8 @@ public class Restoseatreserve extends credsBackend{
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.addActionListener((ActionEvent e) -> {
-                    String uName = username.getText();
-                    String pass = password.getText();
+                    uName = username.getText();
+                    pass = password.getText();
                     
                     credsBackend cb = new credsBackend();
                     
@@ -139,7 +142,7 @@ public class Restoseatreserve extends credsBackend{
                         SRProject.main(null);
                         frame.dispose();
                     } else if(cb.checkCreds(uName, pass)) {
-                        userDash.main(null);
+                        userGUI.main(null);
                         frame.dispose();
                     }
                     else {
