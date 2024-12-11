@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package employeemanage;
 
 /**
@@ -23,7 +19,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-
+import employee.backend.credsBackend;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -41,7 +37,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Restoseatreserve {
+public class Restoseatreserve extends credsBackend{
 
 	private JFrame frame;
 	private JPasswordField password;
@@ -96,6 +92,7 @@ public class Restoseatreserve {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+                
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(58, 58, 58));
 		frame.getContentPane().setForeground(new Color(58, 58, 58));
@@ -136,8 +133,13 @@ public class Restoseatreserve {
                     String uName = username.getText();
                     String pass = password.getText();
                     
+                    credsBackend cb = new credsBackend();
+                    
                     if(pass.contains("1234")&& uName.contains("admin")) {
                         SRProject.main(null);
+                        frame.dispose();
+                    } else if(cb.checkCreds(uName, pass)) {
+                        userDash.main(null);
                         frame.dispose();
                     }
                     else {
