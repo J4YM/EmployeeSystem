@@ -8,7 +8,7 @@ import employeemanage.userGUI;
  *
  * @author Rubs
  */
-public class employee extends userGUI{
+public class employee {
     private String id;
     private String name;
     private String salary;

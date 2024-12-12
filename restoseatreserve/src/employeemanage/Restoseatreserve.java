@@ -95,7 +95,7 @@ public class Restoseatreserve extends userGUI{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-                
+                setTitle("ADMIN DASHBOARD");
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(58, 58, 58));
 		frame.getContentPane().setForeground(new Color(58, 58, 58));
