@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package employee.backend;
-
+import employeemanage.userGUI;
 /**
  *
  * @author Rubs
@@ -14,6 +14,11 @@ public class employee {
     private String salary;
     private String balance;
     private String DaT;
+    
+    public employee(String name, String id) {
+        this.name = name;
+        this.id = id;
+    }
     
     public employee(String id, String name, String salary, String balance, String DaT) {
         this.id = id;

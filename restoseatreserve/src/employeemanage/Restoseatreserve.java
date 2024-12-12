@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package employeemanage;
 
 /**
@@ -9,6 +5,7 @@ package employeemanage;
  * @author Rubs
  */
 
+import employee.backend.backend;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -23,7 +20,8 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
-
+import employee.backend.credsBackend;
+import employee.backend.employee;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -41,12 +39,13 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class Restoseatreserve {
+public class Restoseatreserve extends userGUI{
 
 	private JFrame frame;
 	private JPasswordField password;
 	private JTextField username;
-	
+	public static String uName;
+        public static String pass;
 
 	/**
 	 * Launch the application.
@@ -96,6 +95,7 @@ public class Restoseatreserve {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+                setTitle("ADMIN DASHBOARD");
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(58, 58, 58));
 		frame.getContentPane().setForeground(new Color(58, 58, 58));
@@ -133,11 +133,16 @@ public class Restoseatreserve {
 		
 		JButton btnLogin = new JButton("LOGIN");
 		btnLogin.addActionListener((ActionEvent e) -> {
-                    String uName = username.getText();
-                    String pass = password.getText();
+                    uName = username.getText();
+                    pass = password.getText();
+                    
+                    credsBackend cb = new credsBackend();
                     
                     if(pass.contains("1234")&& uName.contains("admin")) {
                         SRProject.main(null);
+                        frame.dispose();
+                    } else if(cb.checkCreds(uName, pass)) {
+                        userGUI.main(null);
                         frame.dispose();
                     }
                     else {
