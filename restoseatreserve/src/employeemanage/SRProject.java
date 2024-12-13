@@ -46,7 +46,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 public class SRProject {
-        private final backend ItemService;
+    private final backend ItemService;
 	private JFrame frame;
 	private JTextField numReservation;
 	private JTextField name;
@@ -89,14 +89,14 @@ public class SRProject {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 930, 738);
+		frame.setBounds(100, 100, 930, 790);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(58, 58, 58));
 		panel.setBackground(new Color(58, 58, 58));
-		panel.setBounds(0, 0, 914, 699);
+		panel.setBounds(0, 0, 914, 751);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -155,12 +155,12 @@ public class SRProject {
 		txtrStockManagementSystem.setForeground(new Color(255, 255, 255));
 		txtrStockManagementSystem.setBackground(new Color(58, 58, 58));
 		txtrStockManagementSystem.setFont(new Font("Tahoma", Font.BOLD, 14));
-		txtrStockManagementSystem.setText("Seat Reservation");
-		txtrStockManagementSystem.setBounds(75, 28, 123, 22);
+		txtrStockManagementSystem.setText("Employee Management");
+		txtrStockManagementSystem.setBounds(58, 30, 172, 22);
 		panel.add(txtrStockManagementSystem);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(265, 11, 639, 677);
+		scrollPane.setBounds(265, 11, 639, 729);
 		panel.add(scrollPane);
 		
 		table = new JTable();
@@ -411,5 +411,20 @@ public class SRProject {
 		timeBoxT.setColumns(10);
 		timeBoxT.setBounds(67, 508, 0, 22);
 		panel.add(timeBoxT);
+		
+		JButton logoutBtn = new JButton("LOGOUT");
+		logoutBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int select = JOptionPane.showConfirmDialog(logoutBtn, "Are you sure you want to logout?");
+				if(select == 0) {
+					frame.dispose();
+					JOptionPane.showMessageDialog(null, "Logout successfully");
+					Restoseatreserve.main(null);
+				}
+			}
+		});
+		logoutBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
+		logoutBtn.setBounds(85, 695, 89, 23);
+		panel.add(logoutBtn);
 	}
 }
