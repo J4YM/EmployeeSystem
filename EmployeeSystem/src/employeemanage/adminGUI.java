@@ -96,7 +96,7 @@ public class adminGUI {
 		JPanel panel = new JPanel();
 		panel.setForeground(new Color(58, 58, 58));
 		panel.setBackground(new Color(58, 58, 58));
-		panel.setBounds(0, 0, 914, 751);
+		panel.setBounds(0, 0, 914, 727);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -160,7 +160,7 @@ public class adminGUI {
 		panel.add(txtrStockManagementSystem);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(265, 11, 639, 729);
+		scrollPane.setBounds(265, 11, 639, 707);
 		panel.add(scrollPane);
 		
 		table = new JTable();
@@ -296,36 +296,7 @@ public class adminGUI {
 		btnUpdate.setBounds(38, 589, 75, 23);
 		panel.add(btnUpdate);
 		
-		JButton btnReset = new JButton("Reset");
-		btnReset.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int select = JOptionPane.showConfirmDialog(btnReset, "WARNING: This will remove all data!");
-				if (select == 0) {
-					idEmployee.setText("");
-					nameEmployee.setText("");
-					dateTimeData.setText("");
-					salaryData.setText("");
-					balanceData.setText("");
-					dayText.setText("");
-					timeText.setText("");
-					timeBoxT.setText("");
-					DefaultTableModel Rmod = (DefaultTableModel) table.getModel();
-					Rmod.setRowCount(0);
-                                        
-                                        ItemService.getAll().forEach((item) -> {
-                                            ItemService.delete(item.getID());
-                                        });
-                                        
-					JOptionPane.showMessageDialog(null, "Employee Data Succesfully Deleted!");
-				} else {
-					JOptionPane.showMessageDialog(null, "Data has been retained!");
-				}
-			}
-		});
-		btnReset.setBounds(143, 589, 75, 23);
-		panel.add(btnReset);
-		
-		JButton removeText = new JButton("Remove Text");
+		JButton removeText = new JButton("Clear");
 		removeText.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				idEmployee.setText("");
@@ -338,7 +309,7 @@ public class adminGUI {
 				timeBoxT.setText("");
 			}
 		});
-		removeText.setBounds(38, 642, 180, 23);
+		removeText.setBounds(143, 589, 75, 23);
 		panel.add(removeText);
 		
 		JComboBox monthBox = new JComboBox();
@@ -425,7 +396,7 @@ public class adminGUI {
 			}
 		});
 		logoutBtn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		logoutBtn.setBounds(85, 695, 89, 23);
+		logoutBtn.setBounds(83, 662, 89, 23);
 		panel.add(logoutBtn);
 	}
 }
