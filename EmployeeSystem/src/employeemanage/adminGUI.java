@@ -89,7 +89,7 @@ public class adminGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 930, 790);
+		frame.setBounds(100, 100, 930, 760);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -160,7 +160,7 @@ public class adminGUI {
 		panel.add(txtrStockManagementSystem);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(265, 11, 639, 707);
+		scrollPane.setBounds(265, 11, 639, 693);
 		panel.add(scrollPane);
 		
 		table = new JTable();
